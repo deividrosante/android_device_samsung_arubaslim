@@ -1,0 +1,15 @@
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+# http://source.android.com/devices/tech/storage/index.html
+
+#<src>                                          <mnt_point>  <type>  <mnt_flags and options>                     <fs_mgr_flags>
+/dev/block/mmcblk0p21	/system      ext4    ro,barrier=1                                wait
+/dev/block/mmcblk0p24	/data        ext4    nosuid,nodev,barrier=1,noauto_da_alloc,journal_async_commit,discard      wait,check,encryptable=footer
+/dev/block/mmcblk0p8	/boot         emmc
+/dev/block/mmcblk0p22	/cache       ext4
+/dev/block/mmcblk0p13	/recovery    emmc
+/dev/block/mmcblk0p16	/efs	ext4
+/dev/block/mmcblk0p3 	/modem	emmc
+/dev/block/mmcblk1p1	/externel_sd 	auto
+/dev/null 			/sdcard	datamedia
